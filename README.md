@@ -17,7 +17,7 @@ Install `react-native-backdoor` using:
 Go to `settings.gradle` inside your android project folder and paste this lines there:
 
 ```java
-include ':react-native-sensitive-info'
+include ':eact-native-backdoor'
 
 project(':react-native-backdoor').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-backdoor/android')
 ```
