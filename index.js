@@ -1,11 +1,15 @@
-import { NativeEventEmitter, NativeModules } from 'react-native';
-
-if (!NativeModules.Backdoor) {
-    throw new Error('Backdoor module is not registered');
-}
+import { Platform, NativeEventEmitter, NativeModules } from 'react-native';
 
 const backdoors = {};
 export default backdoors;
+
+if (!NativeModules.Backdoor) {
+    if (__DEV__) {
+        console.warn('Backdoor module is not registered');
+    }
+    
+    return;
+}
 
 const eventEmitter = new NativeEventEmitter(NativeModules.Backdoor);
 eventEmitter.addListener('Backdoor/invoke', function([id, name, args]) {
