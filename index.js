@@ -3,7 +3,7 @@ import { Platform, NativeEventEmitter, NativeModules } from 'react-native';
 const backdoors = {};
 export default function(methods) {
     Object.assign(backdoors, methods);
-});
+}
 
 if (!NativeModules.Backdoor) {
     if (__DEV__) {
