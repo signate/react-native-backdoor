@@ -1,7 +1,5 @@
 # react-native-backdoor
 
-![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
-
 Calabash backdoor for react native applications
 
 # Install
