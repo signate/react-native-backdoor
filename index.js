@@ -5,15 +5,8 @@ export default function(methods) {
     Object.assign(backdoors, methods);
 }
 
-if (!NativeModules.Backdoor) {
-    if (__DEV__) {
-        console.warn('Backdoor module is not registered');
-    }
-    
-    return;
-}
-
-const eventEmitter = new NativeEventEmitter(NativeModules.Backdoor);
+if (NativeModules.Backdoor) {
+    const eventEmitter = new NativeEventEmitter(NativeModules.Backdoor);
 eventEmitter.addListener('Backdoor/invoke', function([id, name, args]) {
     invokeBackdoor(id, name, args);
 });
@@ -41,3 +34,8 @@ function invokeBackdoor(id, name, args) {
         resolved = true;
     }
 };
+} else {
+    if (__DEV__) {
+        console.warn('Backdoor module is not registered');
+    }
+}
